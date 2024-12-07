@@ -31,7 +31,8 @@ jobs:
         BODY="${{ github.event.inputs.body }}"
 
         # Replace all occurrences of '|' with '\n', except for '\|'
-        BODY=$(echo "$BODY" | sed 's/\([^\\]\)|/\1\\n/g')
+        BODY=$(echo "$BODY" | sed 's/\([^\\]\)|/\1\n/g')
+
 
         # Check if templates.json exists
         if [ ! -f templates.json ]; then
