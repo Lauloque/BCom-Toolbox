@@ -10,5 +10,9 @@
   {
     "title": "Test Template",
     "body": "Use \\| for line|returns"
+  },
+  {
+    "title": "line return yaaaay",
+    "body": "Use \\| for line\\nreturns"
   }
 ]
