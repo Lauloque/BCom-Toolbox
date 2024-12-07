@@ -1,0 +1,53 @@
+name: Add Template
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: 'Title of the Template'
+        required: true
+        type: string
+      body:
+        description: 'Markdown body of the Template'
+        required: true
+        type: string
+
+jobs:
+  add_template:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: |
+        npm install
+
+    - name: Add new template to templates.json
+      run: |
+        # Fetch input values
+        TITLE="${{ github.event.inputs.title }}"
+        BODY="${{ github.event.inputs.body }}"
+
+        # Check if templates.json exists
+        if [ ! -f templates.json ]; then
+          echo "[]"> templates.json  # Create an empty array if the file does not exist
+        fi
+
+        # Add the new template to templates.json
+        jq --arg title "$TITLE" --arg body "$BODY" \
+          '. += [{"title": $title, "body": $body}]' templates.json > temp.json && mv temp.json templates.json
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add templates.json
+        git commit -m "Add new template: ${{ github.event.inputs.title }}"
+        git push
