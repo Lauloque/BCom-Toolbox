@@ -9,8 +9,8 @@ on:
         type: string
       body:
         description: |
-          'Markdown body of the Template.
-          Use | for line returns.'
+          Markdown body of the Template.
+          Use | for line returns.
         required: true
         type: string
 
