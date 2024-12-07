@@ -30,8 +30,8 @@ jobs:
         TITLE="${{ github.event.inputs.title }}"
         BODY="${{ github.event.inputs.body }}"
 
-        # Replace line breaks with \n for JSON formatting
-        BODY=$(echo "$BODY" | sed ':a;N;$!ba;s/\n/\\n/g')
+        # Replace all occurrences of '|' with '\n', except for '\|'
+        BODY=$(echo "$BODY" | sed 's/\([^\\]\)|/\1\\n/g')
 
         # Check if templates.json exists
         if [ ! -f templates.json ]; then
