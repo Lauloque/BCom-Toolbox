@@ -18,5 +18,9 @@
   {
     "title": "line return",
     "body": "Use \\| for line\nreturns"
+  },
+  {
+    "title": "test true lr",
+    "body": "other test of line   return  paragraph"
   }
 ]
