@@ -11,7 +11,7 @@ on:
         description: 'Markdown body of the Template'
         required: true
         type: string
-        default: Write your template body here. Use vertical pipes \| for line returns.
+        default: Use | for line returns
 
 jobs:
   add_template:
@@ -45,7 +45,6 @@ jobs:
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git add templates.json
         git commit -m "Add new template: ${{ github.event.inputs.title }}"
-        
-        # Set the remote URL with token for authentication
-        git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/L0Lock/BCom-Toolbox.git
-        git push
+
+        # Use the GITHUB_TOKEN for authentication when pushing
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/L0Lock/BCom-Toolbox.git
