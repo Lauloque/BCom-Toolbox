@@ -31,9 +31,8 @@ jobs:
         TITLE="${{ github.event.inputs.title }}"
         BODY="${{ github.event.inputs.body }}"
 
-        # Replace all occurrences of '|' with '\n', except for '\|'
-        BODY=$(echo "$BODY" | sed 's/\([^\\]\)|/\1\n/g')
-
+        # Escape special characters in the body and handle | for newlines
+        ESCAPED_BODY=$(echo "$BODY" | sed 's/"/\\"/g' | sed 's/\([^\\]\)|/\1\\n/g')
 
         # Check if templates.json exists
         if [ ! -f templates.json ]; then
