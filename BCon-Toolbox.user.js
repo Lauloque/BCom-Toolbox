@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         BCom Toolbox
-// @namespace    https://blender.community/
-// @version      1.2
+// @namespace    https://blender.community/*
+// @version      1.0
 // @description  A toolbox to insert pre-written templates in comments on blender.community.
-// @author       Lauloque
+// @author       Loïc "Lauloque" Dautry
 // @match        https://blender.community/*
 // @grant        GM_xmlhttpRequest
 // @grant        GM_setClipboard
@@ -14,27 +14,29 @@
     'use strict';
 
     const MAX_HEIGHT = 400; // Max height of the toolbox in px
-    const TEMPLATES_URL = 'https://raw.githubusercontent.com/L0Lock/BSE-Toolbox/main/templates.json';
+    const TEMPLATES_URL = 'https://raw.githubusercontent.com/L0Lock/BCom-Toolbox/refs/heads/main/templates.json';
 
+    // Function to fetch templates from the correct JSON file using TEMPLATES_URL
     function fetchTemplates(callback) {
-        GM_xmlhttpRequest({
-            method: 'GET',
-            url: TEMPLATES_URL,
-            onload: (response) => {
-                if (response.status === 200) {
-                    const templates = JSON.parse(response.responseText);
-                    callback(templates);
-                } else {
-                    console.error('Failed to load templates:', response.status, response.statusText);
-                }
-            },
-            onerror: (error) => {
-                console.error('Error fetching templates:', error);
-            },
-        });
+        fetch(TEMPLATES_URL)
+            .then(response => response.json())
+            .then(data => {
+            // Ensure templates data is an array
+            if (Array.isArray(data)) {
+                callback(data);
+            } else {
+                console.error('Templates data is not an array:', data);
+            }
+        })
+            .catch(error => console.error('Error fetching templates:', error));
     }
 
     function createToolbox(textarea, templates) {
+        // Get the site’s background and text primary colors using CSS variables
+        const style = getComputedStyle(document.documentElement);
+        const backgroundColor = style.getPropertyValue('--background-primary').trim();
+        const textColor = style.getPropertyValue('--text-primary').trim();
+
         // Create the 💬 icon
         const icon = document.createElement('span');
         icon.textContent = '💬';
@@ -51,7 +53,8 @@
         toolbox.style.maxHeight = `${MAX_HEIGHT}px`;
         toolbox.style.overflowY = 'auto';
         toolbox.style.border = '1px solid #ccc';
-        toolbox.style.backgroundColor = '#f9f9f9';
+        toolbox.style.backgroundColor = backgroundColor; // Use background-primary
+        toolbox.style.color = textColor; // Use text-primary
         toolbox.style.padding = '10px';
         toolbox.style.boxShadow = '0px 2px 4px rgba(0,0,0,0.1)';
         toolbox.style.marginTop = '5px';
@@ -128,12 +131,38 @@
     }
 
     function initToolbox() {
+        console.log("Initializing Toolbox...");
         fetchTemplates(templates => {
-            document.querySelectorAll('textarea[placeholder="Write a comment..."]').forEach(textarea => {
+            // At this point, templates is guaranteed to be an array
+            console.log(`Found ${templates.length} templates.`);
+
+            // Start observing the DOM for dynamically added textareas
+            const observer = new MutationObserver((mutationsList) => {
+                for (const mutation of mutationsList) {
+                    if (mutation.type === 'childList') {
+                        const newTextareas = mutation.target.querySelectorAll('textarea');
+                        newTextareas.forEach(textarea => {
+                            if (!textarea.dataset.toolboxInitialized) {
+                                createToolbox(textarea, templates);
+                                textarea.dataset.toolboxInitialized = 'true'; // Mark as initialized
+                            }
+                        });
+                    }
+                }
+            });
+
+            // Configure the observer to look for added nodes
+            observer.observe(document.body, { childList: true, subtree: true });
+
+            // Also check for existing textareas on initial page load
+            const existingTextareas = document.querySelectorAll('textarea');
+            existingTextareas.forEach(textarea => {
                 createToolbox(textarea, templates);
+                textarea.dataset.toolboxInitialized = 'true';
             });
         });
     }
 
+    // Initialize the toolbox
     initToolbox();
 })();
