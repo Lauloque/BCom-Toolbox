@@ -6,5 +6,9 @@
   {
     "title": "Test Template",
     "body": "This is a template **markdown**. It needs to support basic [syntax](https://google.com) and even|line returns, using vertical pipes like this one: \\| |teehee"
+  },
+  {
+    "title": "Test Template",
+    "body": "Use \\| for line|returns"
   }
 ]
