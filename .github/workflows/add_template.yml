@@ -11,10 +11,7 @@ on:
         description: 'Markdown body of the Template'
         required: true
         type: string
-        default: |  # Multiline input for body
-          Write your template body here. It can have multiple lines.
-          This is a second line of the body.
-          Even more lines here...
+        default: Write your template body here. Use vertical pipes \| for line returns.
 
 jobs:
   add_template:
