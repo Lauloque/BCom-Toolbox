@@ -7,6 +7,12 @@ on:
         description: 'Title of the Template'
         required: true
         type: string
+      body:
+        description: |
+          Markdown body of the Template.
+          You can paste your Markdown content directly here.
+        required: true
+        type: string
 
 jobs:
   add_template:
@@ -19,23 +25,11 @@ jobs:
     - name: Install jq
       run: sudo apt-get install jq
 
-    - name: Interactive Inputs
-      uses: boasiHQ/interactive-inputs@v2.4.0
-      id: inputs
-      with:
-        fields: |
-          - label: body
-            properties:
-              type: textarea
-              description: 'Markdown body of the Template'
-              required: true
-              placeholder: 'Paste your Markdown here...'
-
     - name: Add new template to templates.json
       run: |
         # Fetch input values
         TITLE="${{ github.event.inputs.title }}"
-        BODY="${{ steps.inputs.outputs.body }}"
+        BODY="${{ github.event.inputs.body }}"
 
         # Escape special characters (including quotes and newlines) in the body
         ESCAPED_BODY=$(echo "$BODY" | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g')
