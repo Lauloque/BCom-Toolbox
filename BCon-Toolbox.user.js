@@ -21,13 +21,13 @@
         fetch(TEMPLATES_URL)
             .then(response => response.json())
             .then(data => {
-            // Ensure templates data is an array
-            if (Array.isArray(data)) {
-                callback(data);
-            } else {
-                console.error('Templates data is not an array:', data);
-            }
-        })
+                // Ensure templates data is an array
+                if (Array.isArray(data)) {
+                    callback(data);
+                } else {
+                    console.error('Templates data is not an array:', data);
+                }
+            })
             .catch(error => console.error('Error fetching templates:', error));
     }
 
@@ -98,7 +98,14 @@
 
             templateDiv.addEventListener('click', () => {
                 GM_setClipboard(template.body);
-                alert('Template copied to clipboard!');
+
+                // Create the blink effect for the template text
+                templateDiv.classList.add('blink-green');
+
+                // Remove the blink effect after 1 second
+                setTimeout(() => {
+                    templateDiv.classList.remove('blink-green');
+                }, 1000);
             });
 
             templateList.appendChild(templateDiv);
@@ -129,6 +136,21 @@
         textarea.parentNode.insertBefore(icon, textarea.nextSibling);
         textarea.parentNode.appendChild(toolbox);
     }
+
+    // Adding the blink effect CSS
+    const style = document.createElement('style');
+    style.innerHTML = `
+      .blink-green {
+        animation: blink-green 0.5s ease-in-out 2;
+      }
+
+      @keyframes blink-green {
+        0% { color: green; }
+        50% { color: transparent; }
+        100% { color: green; }
+      }
+    `;
+    document.head.appendChild(style);
 
     function initToolbox() {
         console.log("Initializing Toolbox...");
