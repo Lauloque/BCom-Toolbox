@@ -49,5 +49,6 @@ jobs:
         git add templates.json
         git commit -m "Add new template: ${{ github.event.inputs.title }}"
         
-        # Use the GITHUB_TOKEN for authentication (no need for a PAT)
-        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/L0Lock/BCom-Toolbox.git
+        # Set the remote URL with token for authentication
+        git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/L0Lock/BCom-Toolbox.git
+        git push
