@@ -34,7 +34,7 @@
     function createToolbox(textarea, templates) {
         // Get the site’s background and text primary colors using CSS variables
         const style = getComputedStyle(document.documentElement);
-        const backgroundColor = style.getPropertyValue('--background-primary').trim();
+        const backgroundColor = style.getPropertyValue('--background-secondary').trim();
         const textColor = style.getPropertyValue('--text-primary').trim();
 
         // Create the 💬 icon
@@ -52,7 +52,6 @@
         toolbox.style.width = '100%';
         toolbox.style.maxHeight = `${MAX_HEIGHT}px`;
         toolbox.style.overflowY = 'auto';
-        toolbox.style.border = '1px solid #ccc';
         toolbox.style.backgroundColor = backgroundColor; // Use background-primary
         toolbox.style.color = textColor; // Use text-primary
         toolbox.style.padding = '10px';
@@ -145,9 +144,9 @@
       }
 
       @keyframes blink-green {
-        0% { color: green; }
-        50% { color: transparent; }
-        100% { color: green; }
+        0% { background-color: green; }
+        50% { background-color: transparent; }
+        100% { background-color: green; }
       }
     `;
     document.head.appendChild(style);
