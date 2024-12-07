@@ -10,7 +10,7 @@ on:
       body:
         description: |
           Markdown body of the Template.
-          Use | for line returns.
+          You can paste your Markdown content directly here.
         required: true
         type: string
 
@@ -31,8 +31,8 @@ jobs:
         TITLE="${{ github.event.inputs.title }}"
         BODY="${{ github.event.inputs.body }}"
 
-        # Escape special characters in the body and handle | for newlines
-        ESCAPED_BODY=$(echo "$BODY" | sed 's/"/\\"/g' | sed 's/\([^\\]\)|/\1\\n/g')
+        # Escape special characters in the body (including newline and quotes)
+        ESCAPED_BODY=$(echo "$BODY" | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g')
 
         # Check if templates.json exists
         if [ ! -f templates.json ]; then
@@ -40,7 +40,7 @@ jobs:
         fi
 
         # Add the new template to templates.json
-        jq --arg title "$TITLE" --arg body "$BODY" \
+        jq --arg title "$TITLE" --arg body "$ESCAPED_BODY" \
           '. += [{"title": $title, "body": $body}]' templates.json > temp.json && mv temp.json templates.json
 
     - name: Commit and push changes
