@@ -31,7 +31,7 @@ jobs:
         TITLE="${{ github.event.inputs.title }}"
         BODY="${{ github.event.inputs.body }}"
 
-        # Escape special characters in the body (including newline and quotes)
+        # Escape special characters (including quotes and newlines) in the body
         ESCAPED_BODY=$(echo "$BODY" | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g')
 
         # Check if templates.json exists
@@ -39,7 +39,7 @@ jobs:
           echo "[]"> templates.json  # Create an empty array if the file does not exist
         fi
 
-        # Add the new template to templates.json
+        # Add the new template to templates.json, ensuring correct escaping
         jq --arg title "$TITLE" --arg body "$ESCAPED_BODY" \
           '. += [{"title": $title, "body": $body}]' templates.json > temp.json && mv temp.json templates.json
 
