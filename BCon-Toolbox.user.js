@@ -101,10 +101,10 @@
                 // Create the blink effect for the template text
                 templateDiv.classList.add('blink-green');
 
-                // Remove the blink effect after 1 second
+                // Remove the blink effect after 0.5 second
                 setTimeout(() => {
                     templateDiv.classList.remove('blink-green');
-                }, 1000);
+                }, 500);
             });
 
             templateList.appendChild(templateDiv);
@@ -140,13 +140,13 @@
     const style = document.createElement('style');
     style.innerHTML = `
       .blink-green {
-        animation: blink-green 0.5s ease-in-out 2;
+        animation: blink-green 1s ease-in-out 1;
       }
 
       @keyframes blink-green {
-        0% { background-color: green; }
+        0% { background-color: rgb(47, 64, 42); }
         50% { background-color: transparent; }
-        100% { background-color: green; }
+        100% { background-color: rgb(47, 64, 42); }
       }
     `;
     document.head.appendChild(style);
