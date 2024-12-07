@@ -8,10 +8,11 @@ on:
         required: true
         type: string
       body:
-        description: 'Markdown body of the Template'
+        description: |
+          'Markdown body of the Template.
+          Use | for line returns.'
         required: true
         type: string
-        default: Use | for line returns
 
 jobs:
   add_template:
