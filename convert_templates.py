@@ -45,7 +45,7 @@ def main():
     with TEMPLATES_JSON.open('w', encoding='utf-8') as f:
         json.dump(templates, f, indent=2, ensure_ascii=False)
     
-    print(f\"Generated '{TEMPLATES_JSON}' from '{TEMPLATES_MD}'.\")
+    print(f"Generated '{TEMPLATES_JSON}' from '{TEMPLATES_MD}'.")
 
 if __name__ == '__main__':
     main()
