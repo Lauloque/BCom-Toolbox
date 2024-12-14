@@ -33,7 +33,7 @@ def parse_markdown(md_content):
 
 def main():
     if not TEMPLATES_MD.exists():
-        raise FileNotFoundError(f\"'{TEMPLATES_MD}' not found.\")
+        raise FileNotFoundError(f"'{TEMPLATES_MD}' not found.")
     
     # Read and parse the markdown file
     with TEMPLATES_MD.open('r', encoding='utf-8') as f:
