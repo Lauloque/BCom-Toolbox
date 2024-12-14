@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BCom Toolbox
 // @namespace    https://blender.community/*
-// @version      1.1
+// @version      1.2
 // @description  A toolbox to insert pre-written templates in comments on blender.community.
 // @author       Loïc "Lauloque" Dautry
 // @match        https://blender.community/*
@@ -25,6 +25,7 @@
     function createToolbox(commentButton, templates) {
         // Get site colors
         const style = getComputedStyle(document.documentElement);
+        const backgroundPrimary = style.getPropertyValue('--background-primary').trim();
         const backgroundSecondary = style.getPropertyValue('--background-secondary').trim();
         const backgroundPage = style.getPropertyValue('--background-page').trim();
         const textColor = style.getPropertyValue('--text-primary').trim();
@@ -33,6 +34,7 @@
         const borderColor = style.getPropertyValue('--input-border-color').trim();
         const lightDark = style.getPropertyValue('--lightDark').trim();
         const fontSize = style.getPropertyValue('--comment-content-font-size').trim();
+        const fontSizeS = fontSize * 0.8;
 
         // Create the toolbox container
         const toolbox = document.createElement('div');
@@ -43,14 +45,15 @@
         toolbox.style.backgroundColor = backgroundSecondary;
         toolbox.style.color = textColor;
         toolbox.style.padding = '10px';
-        toolbox.style.boxShadow = '0px 2px 4px rgba(0,0,0,0.1)';
         toolbox.style.marginTop = '5px';
+        toolbox.style.borderBottom = '2px solid';
+        toolbox.style.borderBottomColor = backgroundPage;
+        toolbox.style.fontSize = fontSizeS;
 
         // Add the templates
         const templateList = document.createElement('div');
         templates.forEach(template => {
             const templateDiv = document.createElement('div');
-            templateDiv.style.borderBottom = '1px solid #ddd';
             templateDiv.style.padding = '5px 0';
 
             const title = document.createElement('strong');
