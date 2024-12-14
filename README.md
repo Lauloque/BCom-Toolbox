@@ -2,6 +2,8 @@ A toolbox to insert pre-written templates in comments on [Blender Community](htt
 
 ![image](https://github.com/user-attachments/assets/f5cbe8f6-e7f1-442a-b427-851b18335a77)
 
+You can toggle the toolbox on/off by clicking the 💬 button.
+
 Templates are searchable. Clicking a template copies it on your clipboard, you are then in control of where to insert it, and modify it to your liking.
 
 You can see all the available templates in [BCom-Toolbox/templates.md](https://github.com/L0Lock/BCom-Toolbox/blob/main/templates.md)
