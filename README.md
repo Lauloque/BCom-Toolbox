@@ -1,6 +1,6 @@
 A toolbox to insert pre-written templates in comments on [Blender Community](https://blender.community/#). Because I realised I often had to repeat the same thing and sometimes I did a better job at it than other days. So I started to compile well written and though-out templates I can reuse often.
 
-![image](https://github.com/user-attachments/assets/473b8e11-a79d-4427-93a5-b6d62b7510aa)
+![image](https://github.com/user-attachments/assets/f5cbe8f6-e7f1-442a-b427-851b18335a77)
 
 Templates are searchable. Clicking a template copies it on your clipboard, you are then in control of where to insert it, and modify it to your liking.
 
