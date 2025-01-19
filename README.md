@@ -24,11 +24,27 @@ Templates are searchable. Clicking a template copies it on your clipboard, you a
     If not, copy the whole code and refer to your extension's tools to add a script manually.
   
 
-## Contribute new messages
+## Contribute new or updated messages
 
 New messages have to be written in Markdown, as supported on blender.community. There isn't an official guide of its supported Markdown, but I invite you to read [Basic writing and formatting syntax - GitHub Docs](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) which is a standard Markdown and mostly supported on BC.
 
 Each message is made of a descriptive title (which you see in **bold** in the search result) and a body which is what will actually be inserted.
+
+In addition, for parts that need to be adapted in the final message before posting (typically, examples paragraphs), Use double pipes for marking a section title, and long dashes for itemts that need to be chosen. Example: 
+
+```md
+# Blender is actually free and opensource
+
+Blender is free and open source. Cool, right? Here's the cool things it means on your daily life:
+
+||EXAMPLE ITEMS TO CHOSE FROM OR GET INSPIRED FROM||
+
+⸻You can always find it for free, no fees, no royalties, no strings attached
+⸻Anyone can make their own Blender. Even you!
+⸻You can use Blender however you like. To make free stuff or paid stuff. You can even make your own copy of Blender and sell it!
+```
+
+### Sending your template update
 
 You can send templates proposition in two ways: 
 
