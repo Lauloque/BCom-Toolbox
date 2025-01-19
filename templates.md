@@ -4,7 +4,9 @@ I'd avoid bluntly calling to copy a proprietary software. That's potential for t
 
 See [Copyright guidelines for devtalk - Site Feedback - Developer Forum](https://devtalk.blender.org/t/copyright-guidelines-for-devtalk/17331?u=l0lock) for more context on that.
 
-And we also don't really have to "copy" anything or add new systems, we can also just make our current tools better. Which is also simpler to implement and maintain.
+Apart from potential legal implications, software is built to serve specific needs, making direct comparisons between different types problematic. A 3D content creation tool like Blender cannot be optimized to perform like a game engine, replicate the capabilities of painting software, or function as an IDE. Such cross-comparisons are limited by the distinct requirements and constraints of each type of software.
+
+And to begin with, we don't really have to "copy" anything or add new systems, we can also just make our current tools better. Which is also simpler to implement and maintain.
 
 ----
 
@@ -27,12 +29,15 @@ Then, outline potential solutions:
 
 Proposals like "make it better, faster, or use a better algorithm" don’t provide actionable information for developers. They’re already committed to improving Blender's performance and features, but without specifics, such posts offer no guidance on **what** to improve or **how** to do it.
 
-Developers need concrete, real-world examples of issues:
+A strong proposal should clearly outline **what is lacking, why it’s an issue, and how it could be improved.** This allows developers to immediately understand the problem and assess if a solution is feasible. Concrete examples definitely help to contextualize the proposal:
 
 - What is slow or inefficient?
 - What specific tools, workflows, or processes are problematic?
 - How does it impact your projects or goals?
 
-For example, instead of saying 'faster simulation,' describe a scenario: 'Fluid simulations with high viscosity take excessively long on 4K meshes; optimizing this could save hours during iterations.'
+||EXAMPLES||
+
+⸻For example, instead of saying 'faster simulation,' describe a scenario: 'Fluid simulations with high viscosity take excessively long on 4K meshes; optimizing this could save hours during iterations.'
+⸻What **exactly** feels unintuitive about Blender’s material workflow? What specific features or changes do you think are needed? Without these details, it’s hard to even understand the problem, let alone determine how to address it.
 
 If you can’t pinpoint the issue or solution, it’s better to seek community feedback or provide detailed examples rather than post vague requests.
