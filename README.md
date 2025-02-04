@@ -1,3 +1,6 @@
+![License](https://img.shields.io/github/license/L0Lock/BCom-Toolbox?style=for-the-badge) ![Contributors](https://img.shields.io/github/contributors/L0Lock/BCom-Toolbox?style=for-the-badge) ![Build Status](https://img.shields.io/github/actions/workflow/status/L0Lock/BCom-Toolbox/.github/workflows/add_template.yml?branch=main&style=for-the-badge)
+
+
 A toolbox to insert pre-written templates in comments on [Blender Community](https://blender.community/#). Because I realised I often had to repeat the same thing and sometimes I did a better job at it than other days. So I started to compile well written and though-out templates I can reuse often.
 
 ![image](https://github.com/user-attachments/assets/f5cbe8f6-e7f1-442a-b427-851b18335a77)
