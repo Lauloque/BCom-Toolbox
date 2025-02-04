@@ -25,6 +25,10 @@ Then, outline potential solutions:
 - **Integration and usability:** Suggest how this could fit into Blender’s existing interface and workflows, perhaps as a toggle in the Graph Editor.
 - **Mockups or examples:** If possible, create a visual example of how this could look and work in Blender.
 
+# Edit your message or mark it Done
+
+If that's what you are looking for, please [edit](./edit) your proposal to set its status as "Done", otherwise still [edit](./edit) your post to explain why this solution isn't making it for you, and what would be needed from there to make it work.
+
 # "Make it better" isn't a valid feature proposal
 
 Proposals like "make it better, faster, or use a better algorithm" don’t provide actionable information for developers. They’re already committed to improving Blender's performance and features, but without specifics, such posts offer no guidance on **what** to improve or **how** to do it.
