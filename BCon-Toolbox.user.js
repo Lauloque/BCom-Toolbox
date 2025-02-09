@@ -160,7 +160,7 @@
     }
 
     function initToolbox() {
-        console.log("Initializing Toolbox...");
+        console.log("Initializing BCom Toolbox.");
         fetchTemplates(templates => {
             console.log(`Found ${templates.length} templates.`);
 
