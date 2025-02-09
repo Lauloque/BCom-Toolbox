@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BCom Toolbox
 // @namespace    https://blender.community/*
-// @version      1.3
+// @version      1.3.1
 // @description  A toolbox to insert pre-written templates in comments on blender.community.
 // @author       Loïc "Lauloque" Dautry
 // @match        https://blender.community/*
