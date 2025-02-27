@@ -10,5 +10,9 @@
   {
     "title": "\"Make it better\" isn't a valid feature proposal",
     "body": "Proposals like \"make it better, faster, or use a better algorithm\" don’t provide actionable information for developers. They’re already committed to improving Blender's performance and features, but without specifics, such posts offer no guidance on **what** to improve or **how** to do it.\n\nA strong proposal should clearly outline **what is lacking, why it’s an issue, and how it could be improved.** This allows developers to immediately understand the problem and assess if a solution is feasible. Concrete examples definitely help to contextualize the proposal:\n\n- What is slow or inefficient?\n- What specific tools, workflows, or processes are problematic?\n- How does it impact your projects or goals?\n\n||EXAMPLES||\n\n⸻For example, instead of saying 'faster simulation,' describe a scenario: 'Fluid simulations with high viscosity take excessively long on 4K meshes; optimizing this could save hours during iterations.'\n⸻What **exactly** feels unintuitive about Blender’s material workflow? What specific features or changes do you think are needed? Without these details, it’s hard to even understand the problem, let alone determine how to address it.\n\nIf you can’t pinpoint the issue or solution, it’s better to seek community feedback or provide detailed examples rather than post vague requests."
+  },
+  {
+    "title": "Not a feature proposal",
+    "body": "Hello, Welcome to RCS.\n\nThis platform is meant for posting and discussing feature proposals for Blender. To get support about Blender, please use other platforms, such as [Blender Artists Community](https://blenderartists.org/) or [Blender Stack Exchange](https://blender.stackexchange.com/)."
   }
 ]
