@@ -45,3 +45,9 @@ A strong proposal should clearly outline **what is lacking, why it’s an issue,
 ⸻What **exactly** feels unintuitive about Blender’s material workflow? What specific features or changes do you think are needed? Without these details, it’s hard to even understand the problem, let alone determine how to address it.
 
 If you can’t pinpoint the issue or solution, it’s better to seek community feedback or provide detailed examples rather than post vague requests.
+
+# Not a feature proposal
+
+Hello, Welcome to RCS.
+
+This platform is meant for posting and discussing feature proposals for Blender. To get support about Blender, please use other platforms, such as [Blender Artists Community](https://blenderartists.org/) or [Blender Stack Exchange](https://blender.stackexchange.com/).
