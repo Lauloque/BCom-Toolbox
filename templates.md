@@ -1,10 +1,8 @@
 # Copy another software
 
-I'd avoid bluntly calling to copy a proprietary software. That's potential for troubles, and in the first place it doesn't make a good feature proposal since it assumes that both community members and developers are already familiar with what you refer too, which you can't guarantee.
+I'd avoid bluntly calling to copy a proprietary software. That's potential for troubles (see [this post](https://devtalk.blender.org/t/copyright-guidelines-for-devtalk/17331?u=l0lock) for more context on that), and in the first place it doesn't make a good feature proposal since it assumes that both community members and developers are already familiar with what you refer too, which you can't guarantee.
 
-See [Copyright guidelines for devtalk - Site Feedback - Developer Forum](https://devtalk.blender.org/t/copyright-guidelines-for-devtalk/17331?u=l0lock) for more context on that.
-
-Apart from potential legal implications, software is built to serve specific needs, making direct comparisons between different types problematic. A 3D content creation tool like Blender cannot be optimized to perform like a game engine, replicate the capabilities of painting software, or function as an IDE. Such cross-comparisons are limited by the distinct requirements and constraints of each type of software.
+Apart from potential legal implications, software is built to serve specific needs, making direct comparisons between different types problematic. `A 3D content creation tool like Blender cannot be optimized to perform like a game engine, replicate the capabilities of painting software, or function as an IDE. Such cross-comparisons are limited by the distinct requirements and constraints of each type of software.`
 
 And to begin with, we don't really have to "copy" anything or add new systems, we can also just make our current tools better. Which is also simpler to implement and maintain.
 
@@ -14,8 +12,8 @@ Instead, I would advise you to flesh out your proposal so that anyone can unders
 
 Start by describing the current need:
 
-- **What’s lacking in Blender?** For example, you mentioned the value graph become too cluttered with many keyframes, but can you detail that?
-- **How are current solutions falling short?** Our current graph already have quite a few ways of filtering keyframes to avoid cluttering, in which way do they not answer your need?
+- **What’s lacking in Blender?** `For example, you mentioned the value graph become too cluttered with many keyframes, but can you detail that?`
+- **How are current solutions falling short?** `Our current graph already have quite a few ways of filtering keyframes to avoid cluttering, in which way do they not answer your need?`
 - **What’s the impact?** Highlight how this limitation affects your animations or workflow.
 
 Then, outline potential solutions:
@@ -39,10 +37,12 @@ A strong proposal should clearly outline **what is lacking, why it’s an issue,
 - What specific tools, workflows, or processes are problematic?
 - How does it impact your projects or goals?
 
-||EXAMPLES||
+```
+EXAMPLES
 
 ⸻For example, instead of saying 'faster simulation,' describe a scenario: 'Fluid simulations with high viscosity take excessively long on 4K meshes; optimizing this could save hours during iterations.'
 ⸻What **exactly** feels unintuitive about Blender’s material workflow? What specific features or changes do you think are needed? Without these details, it’s hard to even understand the problem, let alone determine how to address it.
+```
 
 If you can’t pinpoint the issue or solution, it’s better to seek community feedback or provide detailed examples rather than post vague requests.
 
