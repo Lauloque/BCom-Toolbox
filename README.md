@@ -27,25 +27,33 @@ Templates are searchable. Clicking a template copies it on your clipboard, you a
     If not, copy the whole code and refer to your extension's tools to add a script manually.
   
 
-## Contribute new or updated messages
+## Contributing to messages
+
+You are free to propose updates of existing message or entirely new messages!
 
 New messages have to be written in Markdown, as supported on blender.community. There isn't an official guide of its supported Markdown, but I invite you to read [Basic writing and formatting syntax - GitHub Docs](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) which is a standard Markdown and mostly supported on BC.
 
 Each message is made of a descriptive title (which you see in **bold** in the search result) and a body which is what will actually be inserted.
 
-In addition, for parts that need to be adapted in the final message before posting (typically, examples paragraphs), Use double pipes for marking a section title, and long dashes for itemts that need to be chosen. Example: 
+In addition, for parts that need to be adapted in the final message before posting (typically, examples paragraphs), format them as markdown code with single ticks `` ` `` for inlilne and with triple backticks `` ``` `` for a whole block. When giving multiple choices to chose from, you can use long dashes for itemts that need to be chosen. The goal is to make it visually stand out and harder to miss. Example: 
 
-```md
+````md
 # Blender is actually free and opensource
 
-Blender is free and open source. Cool, right? Here's the cool things it means on your daily life:
+Blender is free and open source `like Krita`. Cool, right? Here's the cool things it means on your daily life:
 
-||EXAMPLE ITEMS TO CHOSE FROM OR GET INSPIRED FROM||
+```
+EXAMPLE ITEMS TO CHOSE FROM OR GET INSPIRED FROM
 
 ⸻You can always find it for free, no fees, no royalties, no strings attached
 ⸻Anyone can make their own Blender. Even you!
 ⸻You can use Blender however you like. To make free stuff or paid stuff. You can even make your own copy of Blender and sell it!
 ```
+````
+
+Which will be rendered as:
+
+![image](https://github.com/user-attachments/assets/25c9ab47-21c6-4adc-8c3e-c06ef931b92a)
 
 ### Sending your template update
 
