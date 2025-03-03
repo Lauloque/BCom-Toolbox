@@ -51,3 +51,7 @@ If you can’t pinpoint the issue or solution, it’s better to seek community f
 Hello, Welcome to RCS.
 
 This platform is meant for posting and discussing feature proposals for Blender. To get support about Blender, please use other platforms, such as [Blender Artists Community](https://blenderartists.org/) or [Blender Stack Exchange](https://blender.stackexchange.com/).
+
+# Yup isn't "the" standard
+
+Blender just uses one of [four standards](https://blender.community/c/rightclickselect/nRBY/?sorting=hot#comment-59616).
