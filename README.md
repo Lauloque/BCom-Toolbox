@@ -2,8 +2,8 @@
 
 
 A toolbox to insert pre-written templates in comments on [Blender Community](https://blender.community/#). Because I realised I often had to repeat the same thing and sometimes I did a better job at it than other days. So I started to compile well written and though-out templates I can reuse often.
+![image](https://github.com/user-attachments/assets/66975649-13e2-4508-86b8-ce61a9e8d5a5)
 
-![image](https://github.com/user-attachments/assets/f5cbe8f6-e7f1-442a-b427-851b18335a77)
 
 You can preview all the available templates in [BCom-Toolbox/templates.md](https://github.com/L0Lock/BCom-Toolbox/blob/main/templates.md)
 
@@ -11,7 +11,7 @@ You can preview all the available templates in [BCom-Toolbox/templates.md](https
 
 Toggle the toolbox on/off by clicking the 💬 button.
 
-![demo toggle](https://github.com/user-attachments/assets/289710b2-3164-4ccc-9578-3c6ee793cf22)
+![demoGif](https://github.com/user-attachments/assets/76b65a5c-bc3f-444f-9dc5-f8d3e029f8af)
 
 Templates are searchable. Clicking a template copies it on your clipboard, you are then in control of where to insert it in your comment, and modify it to your liking.
 
