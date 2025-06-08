@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BCom Toolbox
 // @namespace    https://blender.community/*
-// @version      1.5.0
+// @version      1.5.1
 // @description  A toolbox to insert pre-written templates in comments on blender.community.
 // @author       Loïc "Lauloque" Dautry
 // @match        https://blender.community/*
@@ -98,6 +98,8 @@
         toolbox.style.color = textColor;
         toolbox.style.padding = '10px';
         toolbox.style.marginTop = '5px';
+        toolbox.style.border = '1px solid rgb(47, 48, 55)';
+        toolbox.style.borderRadius = '0.5em';
         toolbox.style.borderBottom = '2px solid';
         toolbox.style.borderBottomColor = backgroundPage;
         toolbox.style.fontSize = fontSizeS;
