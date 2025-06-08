@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BCom Toolbox
 // @namespace    https://blender.community/*
-// @version      1.4.0
+// @version      1.5.0
 // @description  A toolbox to insert pre-written templates in comments on blender.community.
 // @author       Loïc "Lauloque" Dautry
 // @match        https://blender.community/*
@@ -24,12 +24,30 @@
             .catch(error => console.error('Error fetching templates:', error));
     }
 
-    // Function to check if text overflows 3 lines and add truncation indicator
-    function setupTextTruncation(element, originalText) {
-        // Set the text and apply line clamping
-        element.textContent = originalText;
+    // Simple markdown parser for basic formatting
+    function parseMarkdown(text) {
+        return text
+            // Bold: **text** or __text__
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/__(.*?)__/g, '<strong>$1</strong>')
+            // Italic: *text* or _text_
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            .replace(/_(.*?)_/g, '<em>$1</em>')
+            // Code: `text`
+            .replace(/`(.*?)`/g, '<code>$1</code>')
+            // Links: [text](url)
+            .replace(/\[([^\]]+)\]\(([^\)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
+            // Line breaks
+            .replace(/\n/g, '<br>');
+    }
 
-        // Use a temporary element to check if text would overflow 3 lines
+    // Function to check if rendered HTML overflows 3 lines and add truncation indicator
+    function setupHTMLTruncation(element, originalText) {
+        // Parse markdown and set as HTML
+        const parsedHTML = parseMarkdown(originalText);
+        element.innerHTML = parsedHTML;
+
+        // Use a temporary element to check if content would overflow 3 lines
         const tempDiv = document.createElement('div');
         tempDiv.style.cssText = element.style.cssText;
         tempDiv.style.position = 'absolute';
@@ -38,7 +56,7 @@
         tempDiv.style.maxHeight = 'none';
         tempDiv.style.webkitLineClamp = 'none';
         tempDiv.style.overflow = 'visible';
-        tempDiv.textContent = originalText;
+        tempDiv.innerHTML = parsedHTML;
 
         document.body.appendChild(tempDiv);
 
@@ -51,8 +69,8 @@
         document.body.removeChild(tempDiv);
 
         if (contentHeight > threeLineHeight) {
-            // Text overflows, so we need to show truncation indicator
-            element.textContent = originalText + ' [...]';
+            // Content overflows, add truncation indicator
+            element.innerHTML = parsedHTML + ' <span style="font-style: italic; opacity: 0.7;">[...]</span>';
         }
     }
 
@@ -96,15 +114,16 @@
             title.style.marginBottom = '8px';
 
             const body = document.createElement('div');
-            body.style.whiteSpace = 'pre-line'; // Preserve line breaks
+            body.className = 'bcom-toolbox'; // Add class for CSS styling
+            body.style.whiteSpace = 'normal'; // Changed from pre-line since we're using HTML
             body.style.display = '-webkit-box';
             body.style.webkitLineClamp = '3';
             body.style.webkitBoxOrient = 'vertical';
             body.style.overflow = 'hidden';
             body.style.lineHeight = '1.2em';
 
-            // Set up truncation with overflow detection
-            setupTextTruncation(body, template.body);
+            // Set up truncation with markdown parsing and overflow detection
+            setupHTMLTruncation(body, template.body);
 
             templateDiv.appendChild(title);
             templateDiv.appendChild(body);
@@ -135,7 +154,7 @@
         const icon = document.createElement('span');
         icon.textContent = '💬';
         icon.style.cursor = 'pointer';
-        icon.style.color = '#0078D7';
+        icon.style.color = '#f28128';
         icon.style.fontSize = '16px';
         icon.title = 'Toggle template toolbox';
 
@@ -246,6 +265,20 @@
         0% { background-color: rgb(47, 64, 42); }
         50% { background-color: transparent; }
         100% { background-color: rgb(47, 64, 42); }
+      }
+
+      /* Styles for rendered markdown in previews */
+      .bcom-toolbox code {
+        background-color: rgba(127, 127, 127, 0.2);
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-family: monospace;
+        font-size: 0.9em;
+      }
+
+      .bcom-toolbox a {
+        color: var(--community-theme-color, var(--accent, #f28128));
+        text-decoration: underline;
       }
     `;
     document.head.appendChild(style);
