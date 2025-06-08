@@ -1,20 +1,20 @@
 // ==UserScript==
 // @name         BCom Toolbox
 // @namespace    https://blender.community/*
-// @version      1.3.1
+// @version      1.4.0
 // @description  A toolbox to insert pre-written templates in comments on blender.community.
 // @author       Loïc "Lauloque" Dautry
 // @match        https://blender.community/*
 // @grant        GM_setClipboard
-// @updateURL    https://github.com/L0Lock/BCom-Toolbox/raw/refs/heads/main/BCon-Toolbox.user.js
-// @downloadURL  https://github.com/L0Lock/BCom-Toolbox/raw/refs/heads/main/BCon-Toolbox.user.js
+// @updateURL    https://github.com/Lauloque/BCom-Toolbox/raw/refs/heads/main/BCon-Toolbox.user.js
+// @downloadURL  https://github.com/Lauloque/BCom-Toolbox/raw/refs/heads/main/BCon-Toolbox.user.js
 // ==/UserScript==
 
 (function () {
     'use strict';
 
     const MAX_HEIGHT = 400; // Max height of the toolbox in px
-    const TEMPLATES_URL = 'https://raw.githubusercontent.com/L0Lock/BCom-Toolbox/refs/heads/main/templates.json';
+    const TEMPLATES_URL = 'https://raw.githubusercontent.com/Lauloque/BCom-Toolbox/refs/heads/main/templates.json';
 
     // Function to fetch templates
     function fetchTemplates(callback) {
@@ -22,6 +22,38 @@
             .then(response => response.json())
             .then(data => callback(Array.isArray(data) ? data : []))
             .catch(error => console.error('Error fetching templates:', error));
+    }
+
+    // Function to check if text overflows 3 lines and add truncation indicator
+    function setupTextTruncation(element, originalText) {
+        // Set the text and apply line clamping
+        element.textContent = originalText;
+
+        // Use a temporary element to check if text would overflow 3 lines
+        const tempDiv = document.createElement('div');
+        tempDiv.style.cssText = element.style.cssText;
+        tempDiv.style.position = 'absolute';
+        tempDiv.style.visibility = 'hidden';
+        tempDiv.style.height = 'auto';
+        tempDiv.style.maxHeight = 'none';
+        tempDiv.style.webkitLineClamp = 'none';
+        tempDiv.style.overflow = 'visible';
+        tempDiv.textContent = originalText;
+
+        document.body.appendChild(tempDiv);
+
+        // Calculate line height and check if content exceeds 3 lines
+        const computedStyle = getComputedStyle(tempDiv);
+        const lineHeight = parseFloat(computedStyle.lineHeight) || parseFloat(computedStyle.fontSize) * 1.2;
+        const contentHeight = tempDiv.scrollHeight;
+        const threeLineHeight = lineHeight * 3;
+
+        document.body.removeChild(tempDiv);
+
+        if (contentHeight > threeLineHeight) {
+            // Text overflows, so we need to show truncation indicator
+            element.textContent = originalText + ' [...]';
+        }
     }
 
     function createToolbox(commentButton, templates) {
@@ -54,16 +86,25 @@
 
         // Add the templates
         const templateList = document.createElement('div');
-        templates.forEach(template => {
+        templates.forEach((template, index) => {
             const templateDiv = document.createElement('div');
-            templateDiv.style.padding = '5px 0';
+            templateDiv.style.padding = '10px 0';
 
             const title = document.createElement('strong');
             title.textContent = template.title;
             title.style.display = 'block';
+            title.style.marginBottom = '8px';
 
             const body = document.createElement('div');
-            body.textContent = template.body; // Show raw Markdown
+            body.style.whiteSpace = 'pre-line'; // Preserve line breaks
+            body.style.display = '-webkit-box';
+            body.style.webkitLineClamp = '3';
+            body.style.webkitBoxOrient = 'vertical';
+            body.style.overflow = 'hidden';
+            body.style.lineHeight = '1.2em';
+
+            // Set up truncation with overflow detection
+            setupTextTruncation(body, template.body);
 
             templateDiv.appendChild(title);
             templateDiv.appendChild(body);
@@ -75,6 +116,17 @@
             });
 
             templateList.appendChild(templateDiv);
+
+            // Add horizontal rule between templates (except after the last one)
+            if (index < templates.length - 1) {
+                const hr = document.createElement('hr');
+                hr.style.border = 'none';
+                hr.style.borderTop = '1px solid';
+                hr.style.borderTopColor = borderColor;
+                hr.style.margin = '0';
+                hr.style.opacity = '0.3';
+                templateList.appendChild(hr);
+            }
         });
 
         toolbox.appendChild(templateList);
