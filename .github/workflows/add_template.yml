@@ -1,6 +1,11 @@
 name: Update Templates JSON
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'templates.md'
   workflow_dispatch:
 
 jobs:
