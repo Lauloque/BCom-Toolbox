@@ -23,6 +23,10 @@ Then, outline potential solutions:
 - **Integration and usability:** Suggest how this could fit into Blender’s existing interface and workflows, perhaps as a toggle in the Graph Editor.
 - **Mockups or examples:** If possible, create a visual example of how this could look and work in Blender.
 
+# Duplicate
+
+It's been requested multiple times already, please prefer upvoting and commenting on existing proposals to make them more visible in the list instead of adding yet another proposal in the list that dilutes the topic's visibility.
+
 # Edit your message or mark it Done
 
 If that's what you are looking for, please [edit](./edit) your proposal to set its status as "Done", otherwise still [edit](./edit) your post to explain why this solution isn't making it for you, and what would be needed from there to make it work.
