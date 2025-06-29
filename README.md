@@ -29,7 +29,7 @@ Templates are searchable. Clicking a template copies it on your clipboard, you a
 
 ## Contributing to messages
 
-You are free to propose updates of existing message or entirely new messages!
+You are free to propose updates of existing message or entirely new messages in [templates.md](https://github.com/Lauloque/BCom-Toolbox/blob/main/templates.md).
 
 New messages have to be written in Markdown, as supported on blender.community. There isn't an official guide of its supported Markdown, but I invite you to read [Basic writing and formatting syntax - GitHub Docs](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) which is a standard Markdown and mostly supported on BC.
 
@@ -61,11 +61,11 @@ You can send templates proposition in two ways:
 
 1. Post a [Template Proposal](https://github.com/L0Lock/BCom-Toolbox/issues/new?assignees=L0Lock&labels=enhancement&projects=&template=template-proposal.md&title=%5BTemplate%5D+your+new+template), adapted for regular users and to propose a single template
     - Follow the template proposal prefill: describe the proposal, post the code twice so that we can see both raw code and final preview.
-    - IF I accept it: I will manually add it to the official message list.
-    - ELSE: I might ask for updates, or make changes myself, of deny the contribution.
+        - IF I accept it: I will manually add it to the official message list.
+        - ELSE: I might ask for updates, or make changes myself, of deny the contribution.
 2. Fork the repository and send a pull request: adapted to send multiple templates at once and for advanced users who know how to use git.
     - Fork the repo and open [templates.md](https://github.com/L0Lock/BCom-Toolbox/raw/refs/heads/main/templates.md).
-    - Add your new template  ideally sorter alphabetically with the others.
+    - Add your new template sorted alphabetically with the others.
     - Send your update via pull request, **with a detailed explanation of the changes and why**.
-    - IF I accept it: I will trigger the json regeneration with the [Update Templates JSON](https://github.com/L0Lock/BCom-Toolbox/actions/workflows/add_template.yml) Github Action.
-    - ELSE: I might ask for updates, or deny the PR.
+        - IF I accept it: I will merge the PR and [this action](https://github.com/L0Lock/BCom-Toolbox/actions/workflows/add_template.yml) will automatically update the templates.json file.
+        - ELSE: I might ask for updates, or deny the PR.
