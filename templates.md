@@ -44,6 +44,10 @@ EXAMPLES
 
 If you can’t pinpoint the issue or solution, it’s better to seek community feedback or provide detailed examples rather than post vague requests.
 
+# Native CAD formats
+
+As explained [by jeroenbakker over here](https://blender.community/c/rightclickselect/kBGr/#comment-82775), getting CAD formats natively is far from trivial and closer to unrealistic, at least coming from within Blender. Hence the current approach of having third-party addons that convert them into data that Blender can use.
+
 # Not a feature proposal
 
 Hello, Welcome to RCS.
